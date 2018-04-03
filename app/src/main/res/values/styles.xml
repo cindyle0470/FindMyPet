@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/khaki</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">30dp</item>
+    </style>
+
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/khaki</item>  <!--  對話框顏色 -->
+        <item name="android:textSize">20dp</item> <!--  菜單text大小 -->
+        <item name="android:textColor">@color/saddlebrown</item>   <!--  菜單text顏色 -->
+        <item name="android:textColorSecondary">#3F51B5</item>
+    </style>
+
+
+
+</resources>
