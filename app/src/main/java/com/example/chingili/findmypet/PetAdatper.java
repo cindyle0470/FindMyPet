@@ -36,7 +36,7 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Pet pet = petList.get(position);
-        holder.tvArea.setText(pet.getRegion_id());
+        holder.tvArea.setText(pet.getregionId());
         holder.tvSex.setText(pet.getSex());
         holder.tvSize.setText(pet.getSize());
         holder.tvMassage.setText(pet.getDescription());
@@ -53,7 +53,7 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView img;
+       // private final ImageView img;
         private final TextView tvArea;
         private final TextView tvSex;
         private final TextView tvSize;
@@ -62,7 +62,7 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
 
-            img = itemView.findViewById(R.id.img);
+           // img = itemView.findViewById(R.id.img);
             tvArea = itemView.findViewById(R.id.tv_area);
             tvSex = itemView.findViewById(R.id.tv_sex);
             tvSize = itemView.findViewById(R.id.tv_size);

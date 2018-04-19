@@ -1,43 +1,48 @@
 package com.example.chingili.findmypet.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by chingili on 2018/3/29.
  */
 
 public class Pet {
+    @JsonIgnoreProperties(ignoreUnknown = true)   // 防止 json response 中因為出現了 model class 沒定義的變數而產生 exception
+    @JsonProperty("id")                    //把 json response 中的 key map到 model class 的變數令到 model class 不用出現有 "_" 的變數名稱
     int id;
-    int type_id;
-    int person_id;
-    int region_id;
-    String sub_region;
+    @JsonProperty("type_id")
+    int typeId;
+    @JsonProperty("person_id")
+    int personId;
+    @JsonProperty("region_id")
+    int regionId;
+    @JsonProperty("sub_region")
+    String subRegion;
+    @JsonProperty("sex")
     String sex;
+    @JsonProperty("size")
     String size;
+    @JsonProperty("color")
     String color;
+    @JsonProperty("description")
     String description;
-    String photos;
+    @JsonProperty("photos")
+    String photo;
+    List<PetPhoto> photos = new ArrayList<>();
+    @JsonProperty("status")
     boolean status;
-    private String contact_person;
-
-    public String getContact_person() {
-        return contact_person;
-    }
-
-    public void setContact_person(String contact_person) {
-        this.contact_person = contact_person;
-    }
-
-    public String getContact_method() {
-        return contact_method;
-    }
-
-    public void setContact_method(String contact_method) {
-        this.contact_method = contact_method;
-    }
-
-    private String contact_method;
+    @JsonProperty("contact_person")
+    private String contactPerson;
+    @JsonProperty("contact_method")
+    private String contactMethod;
 
     public Pet() {
     }
+
 
     public int getId() {
         return id;
@@ -47,36 +52,36 @@ public class Pet {
         this.id = id;
     }
 
-    public int getType_id() {
-        return type_id;
+    public int gettypeId() {
+        return typeId;
     }
 
-    public void setType_id(int type_id) {
-        this.type_id = type_id;
+    public void settypeId(int typeId) {
+        this.typeId = typeId;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public int getpersonId() {
+        return personId;
     }
 
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
+    public void setpersonId(int personId) {
+        this.personId = personId;
     }
 
-    public int getRegion_id() {
-        return region_id;
+    public int getregionId() {
+        return regionId;
     }
 
-    public void setRegion_id(int region_id) {
-        this.region_id = region_id;
+    public void setregionId(int regionId) {
+        this.regionId = regionId;
     }
 
-    public String getSub_region() {
-        return sub_region;
+    public String subRegion() {
+        return subRegion;
     }
 
-    public void setSub_region(String sub_region) {
-        this.sub_region = sub_region;
+    public void setsubRegion(String subRegion) {
+        this.subRegion = subRegion;
     }
 
     public String getSex() {
@@ -111,12 +116,13 @@ public class Pet {
         this.description = description;
     }
 
-    public String getPhotos() {
+    public List<PetPhoto> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(String photos) {
+    public void setPhotos(List<PetPhoto> photos) {
         this.photos = photos;
+
     }
 
     public boolean isStatus() {
@@ -127,13 +133,26 @@ public class Pet {
         this.status = status;
     }
 
-    public Pet( int region_id, String sex, String size, String description) {
-
-
-        this.region_id = region_id;
-        this.sex = sex;
-        this.size = size;
-        this.description = description;
-
+    public String getcontactPerson() {
+        return contactPerson;
     }
+
+    public void setcontactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public String getcontactMethod() {
+        return contactMethod;
+    }
+
+    public void setcontactMethod(String contactMethod) {
+        this.contactMethod = contactMethod;
+    }
+
+
+
+
+
+
+
 }

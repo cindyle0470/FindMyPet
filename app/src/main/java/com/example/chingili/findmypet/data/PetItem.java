@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chingili.findmypet.R;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by chingili on 2018/3/31.
@@ -46,6 +48,8 @@ public class PetItem {
 
 
 
+
+
     private void setSex() {
         switch (pet.sex) {
             case "1":
@@ -61,7 +65,7 @@ public class PetItem {
     }
 
     private void setArea() {
-        switch (pet.getRegion_id()) {
+        switch (pet.getregionId()) {
             case 1:
                 tvArea.setText("基隆市");
                 break;

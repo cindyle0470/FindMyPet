@@ -63,9 +63,9 @@ public class FindPetFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_find_pet, container, false);
         findviews(view);
 
-
-
         getPetList(1);
+
+
 
 
 
@@ -76,6 +76,8 @@ public class FindPetFragment extends Fragment {
 
         return view;
     }
+
+
 
     private void getPetList(int i) {
         OkHttpClient client = new OkHttpClient();
