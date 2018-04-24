@@ -68,8 +68,44 @@ public class Pet {
         this.personId = personId;
     }
 
-    public int getregionId() {
-        return regionId;
+    public String getregionId() {
+        switch (regionId) {
+            case 1:
+                return "基隆市";
+            case 2:
+                return "台北市";
+            case 3:
+                return "新北市";
+            case 4:
+                return "桃園市";
+            case 5:
+                return "新竹市/縣";
+            case 6:
+                return "苗栗縣";
+            case 7:
+                return "台中市";
+            case 8:
+                return "彰化縣";
+            case 9:
+                return "南投縣";
+            case 10:
+                return "雲林縣";
+            case 11:
+                return "嘉義市/縣";
+            case 12:
+                return "台南市";
+            case 13:
+                return "高雄市";
+            case 14:
+                return "屏東縣";
+            case 15:
+                return "台東縣";
+            case 16:
+                return "花蓮縣";
+            case 17:
+                return "宜蘭縣";
+        }
+        return String.valueOf(regionId);
     }
 
     public void setregionId(int regionId) {
@@ -85,7 +121,13 @@ public class Pet {
     }
 
     public String getSex() {
-        return sex;
+        switch (sex) {
+            case "1":
+                return "公";
+            case "2":
+                return "母";
+        }
+        return "不明";
     }
 
     public void setSex(String sex) {
@@ -120,10 +162,19 @@ public class Pet {
         return photos;
     }
 
+
+
     public void setPhotos(List<PetPhoto> photos) {
         this.photos = photos;
 
     }
+//    public void setPhoto() {
+//        photo = photos.get(0).toString();
+//    }
+//
+//    public String getPhoto() {
+//        return photo;
+//    }
 
     public boolean isStatus() {
         return status;

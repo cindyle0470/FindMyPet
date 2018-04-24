@@ -2,6 +2,8 @@ package com.example.chingili.findmypet.fragment;
 
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ import com.example.chingili.findmypet.ChooseActivity;
 import com.example.chingili.findmypet.PetAdatper;
 import com.example.chingili.findmypet.R;
 import com.example.chingili.findmypet.data.Pet;
+import com.example.chingili.findmypet.data.PetPhoto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -48,8 +51,10 @@ public class FindPetFragment extends Fragment {
     private Button btnCat;
     private Button btnOther;
     private TextView tvHello;
+    private Bitmap bitmap;
+    private Pet pet;
     private RecyclerView recyclerView;
-    private List<Pet> list;
+    //private ArrayList<Pet> list;
 
     public FindPetFragment() {
         // Required empty public constructor
@@ -101,8 +106,30 @@ public class FindPetFragment extends Fragment {
             }
         });
 
+
+
+
     }
 
+//    private void setPhoto() {
+//        OkHttpClient client = new OkHttpClient();
+//        final Request request = new Request.Builder().url(pet.getPhoto()).build();
+//        Call call = client.newCall(request);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                // 告知使用者連線失敗
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                byte[] bytes = response.body().bytes();
+//                bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length);
+//                img.setImageBitmap(bitmap);
+//            }
+//        });
+//
+//    }
     private void parseJackSON(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -110,17 +137,21 @@ public class FindPetFragment extends Fragment {
             final ArrayList<Pet> list = objectMapper.readValue(json, new TypeReference<List<Pet>>() {
             });
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+
                     setupRecyclerView(list);
                 }
             });
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
 
     private void setupRecyclerView(List<Pet> list) {
         PetAdatper adatper = new PetAdatper(list);
