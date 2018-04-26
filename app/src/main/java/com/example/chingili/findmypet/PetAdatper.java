@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.chingili.findmypet.data.Pet;
 
 import java.util.List;
@@ -18,6 +19,8 @@ import java.util.List;
 
 public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
     private List<Pet> petList;
+    private Context context;
+    private Pet pet;
 
     public PetAdatper(List<Pet> pets) {
         this.petList = pets;
@@ -25,7 +28,7 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_pet, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
@@ -34,13 +37,9 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Pet pet = petList.get(position);
+        pet = petList.get(position);
+        holder.setModel(context, pet);
 
-
-        holder.tvArea.setText(String.valueOf(pet.getregionId()));
-        holder.tvSex.setText(pet.getSex());
-        holder.tvSize.setText(pet.getSize());
-        holder.tvMassage.setText(pet.getDescription());
     }
 
     @Override
@@ -51,21 +50,32 @@ public class PetAdatper extends RecyclerView.Adapter < PetAdatper.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        //private final ImageView img;
-        private final TextView tvArea;
-        private final TextView tvSex;
-        private final TextView tvSize;
-        private final TextView tvMassage;
+        private ImageView img;
+        private TextView tvArea;
+        private TextView tvSex;
+        private TextView tvSize;
+        private TextView tvMassage;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            //img = itemView.findViewById(R.id.img);
+            img = itemView.findViewById(R.id.img);
             tvArea = itemView.findViewById(R.id.tv_area);
             tvSex = itemView.findViewById(R.id.tv_sex);
             tvSize = itemView.findViewById(R.id.tv_size);
             tvMassage = itemView.findViewById(R.id.tv_massage);
 
         }
+
+        public void setModel(Context context, Pet pet) {
+                Glide.with(context).load(pet.getPhotos().get(0).getImage())
+                        .into(img);
+
+                tvArea.setText(String.valueOf(pet.getregionId()));
+                tvSex.setText(pet.getSex());
+                tvSize.setText(pet.getSize());
+                tvMassage.setText(pet.getDescription());
+        }
     }
+
 }

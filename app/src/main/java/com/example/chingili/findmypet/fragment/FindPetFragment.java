@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.example.chingili.findmypet.ChooseActivity;
 import com.example.chingili.findmypet.PetAdatper;
 import com.example.chingili.findmypet.R;
@@ -157,6 +159,9 @@ public class FindPetFragment extends Fragment {
         PetAdatper adatper = new PetAdatper(list);
         recyclerView.setAdapter(adatper);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+
     }
 
     private void findviews(View view) {

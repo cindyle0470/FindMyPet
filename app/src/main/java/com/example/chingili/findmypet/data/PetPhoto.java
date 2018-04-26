@@ -29,6 +29,7 @@ public class PetPhoto {
 
 
     public String getImage() {
+
         return imageUrl;
     }
 
