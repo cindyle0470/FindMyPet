@@ -29,6 +29,6 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation group: 'com.fasterxml.jackson.core',
-            name:'jackson-databind', version: '2.9.4'
+            name: 'jackson-databind', version: '2.9.4'
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }

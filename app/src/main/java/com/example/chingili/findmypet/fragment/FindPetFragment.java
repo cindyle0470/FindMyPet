@@ -2,6 +2,7 @@ package com.example.chingili.findmypet.fragment;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -18,9 +19,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.chingili.findmypet.ChooseActivity;
+import com.example.chingili.findmypet.DetailActivity;
 import com.example.chingili.findmypet.PetAdatper;
 import com.example.chingili.findmypet.R;
 import com.example.chingili.findmypet.data.Pet;
@@ -71,6 +74,43 @@ public class FindPetFragment extends Fragment {
         findviews(view);
 
         getPetList(1);
+        toolbar.setLogo(R.drawable.ic_dog);
+
+        btnCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDog.setVisibility(View.VISIBLE);
+                btnCat.setVisibility(View.GONE);
+                btnOther.setVisibility(View.VISIBLE);
+                toolbar.setLogo(R.drawable.ic_cat);
+                tvTitle.setText(getResources().getText(R.string.cat_zone));
+                getPetList(2);
+            }
+        });
+
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDog.setVisibility(View.VISIBLE);
+                btnCat.setVisibility(View.VISIBLE);
+                btnOther.setVisibility(View.GONE);
+                toolbar.setLogo(R.drawable.ic_other);
+                tvTitle.setText(getResources().getText(R.string.other_zone));
+                getPetList(3);
+            }
+        });
+
+        btnDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDog.setVisibility(View.GONE);
+                btnCat.setVisibility(View.VISIBLE);
+                btnOther.setVisibility(View.VISIBLE);
+                toolbar.setLogo(R.drawable.ic_dog);
+                tvTitle.setText(getResources().getText(R.string.dog_zone));
+                getPetList(1);
+            }
+        });
 
 
 
@@ -86,25 +126,32 @@ public class FindPetFragment extends Fragment {
 
 
 
+
+
     private void getPetList(int i) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://hair-kids-nest.herokuapp.com/pets.json?type_id=1")
+                .url("https://hair-kids-nest.herokuapp.com/pets.json?type_id=" + i)
                 .build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                // 告知使用者連線失敗
+                Toast.makeText(getActivity(), "目前尚無資料喔~", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
-                Log.d("okHttp", json);
+                if (json != null && json.length() > 0){
+                    parseJackSON(json);
+                } else {
 
-                // 解析json
-                parseJackSON(json);
+
+
+                    //recyclerView.setAdapter(null);    // 若無資料，清空list（若不加這行，會顯示剛貓或狗的資料，因是加載，非先清空再加載）
+                    Toast.makeText(getActivity(), "目前尚無資料喔~", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -113,25 +160,6 @@ public class FindPetFragment extends Fragment {
 
     }
 
-//    private void setPhoto() {
-//        OkHttpClient client = new OkHttpClient();
-//        final Request request = new Request.Builder().url(pet.getPhoto()).build();
-//        Call call = client.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                // 告知使用者連線失敗
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                byte[] bytes = response.body().bytes();
-//                bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length);
-//                img.setImageBitmap(bitmap);
-//            }
-//        });
-//
-//    }
     private void parseJackSON(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -156,7 +184,16 @@ public class FindPetFragment extends Fragment {
 
 
     private void setupRecyclerView(List<Pet> list) {
-        PetAdatper adatper = new PetAdatper(list);
+        PetAdatper adatper = new PetAdatper(list, new PetAdatper.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                Pet pet = (Pet) view.getTag();
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("PET",pet);
+                startActivity(intent);
+
+            }
+        });
         recyclerView.setAdapter(adatper);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);

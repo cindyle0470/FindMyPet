@@ -1,8 +1,12 @@
 package com.example.chingili.findmypet.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +14,8 @@ import java.util.List;
  * Created by chingili on 2018/3/29.
  */
 
-public class Pet {
+public class Pet implements Parcelable {
+
     @JsonIgnoreProperties(ignoreUnknown = true)   // 防止 json response 中因為出現了 model class 沒定義的變數而產生 exception
     @JsonProperty("id")                    //把 json response 中的 key map到 model class 的變數令到 model class 不用出現有 "_" 的變數名稱
     int id;
@@ -43,6 +48,61 @@ public class Pet {
     public Pet() {
     }
 
+    public Pet(int id, int typeId, int personId, int regionId, String subRegion, String sex, String size, String color, String description, String photo, List<PetPhoto> photos, boolean status, String contactPerson, String contactMethod) {
+        this.id = id;
+        this.typeId = typeId;
+        this.personId = personId;
+        this.regionId = regionId;
+        this.subRegion = subRegion;
+        this.sex = sex;
+        this.size = size;
+        this.color = color;
+        this.description = description;
+        this.photo = photo;
+        this.photos = photos;
+        this.status = status;
+        this.contactPerson = contactPerson;
+        this.contactMethod = contactMethod;
+    }
+
+//    public Pet(int regionId, String subRegion, String sex, String size, String color, String description, String contactPerson, String contactMethod) {
+//        this.regionId = regionId;
+//        this.subRegion = subRegion;
+//        this.sex = sex;
+//        this.size = size;
+//        this.color = color;
+//        this.description = description;
+//        this.contactPerson = contactPerson;
+//        this.contactMethod = contactMethod;
+//    }
+
+    protected Pet(Parcel in) {
+        id = in.readInt();
+        typeId = in.readInt();
+        personId = in.readInt();
+        regionId = in.readInt();
+        subRegion = in.readString();
+        sex = in.readString();
+        size = in.readString();
+        color = in.readString();
+        description = in.readString();
+        photo = in.readString();
+        status = in.readByte() != 0;
+        contactPerson = in.readString();
+        contactMethod = in.readString();
+    }
+
+    public static final Creator<Pet> CREATOR = new Creator<Pet>() {
+        @Override
+        public Pet createFromParcel(Parcel in) {
+            return new Pet(in);
+        }
+
+        @Override
+        public Pet[] newArray(int size) {
+            return new Pet[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -201,9 +261,25 @@ public class Pet {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-
-
-
-
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(typeId);
+        dest.writeInt(personId);
+        dest.writeInt(regionId);
+        dest.writeString(subRegion);
+        dest.writeString(sex);
+        dest.writeString(size);
+        dest.writeString(color);
+        dest.writeString(description);
+        dest.writeString(photo);
+        dest.writeByte((byte) (status ? 1 : 0));
+        dest.writeString(contactPerson);
+        dest.writeString(contactMethod);
+    }
 }
