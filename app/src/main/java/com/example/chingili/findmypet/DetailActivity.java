@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         List<PetPhoto> photos = pet.getPhotos();
 
         if (photos != null && photos.size() > 0) {
-            Glide.with(DetailActivity.this).load(photos).into(img);
+            Glide.with(DetailActivity.this).load(photos.get(0).getImage()).into(img);
         }
 
         backBtn.setOnClickListener(new View.OnClickListener() {
