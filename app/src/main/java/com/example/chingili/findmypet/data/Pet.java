@@ -172,7 +172,7 @@ public class Pet implements Parcelable {
         this.regionId = regionId;
     }
 
-    public String subRegion() {
+    public String getsubRegion() {
         return subRegion;
     }
 
@@ -228,7 +228,7 @@ public class Pet implements Parcelable {
         this.photos = photos;
 
     }
-//    public void setPhoto() {
+//    public void photo() {
 //        photo = photos.get(0).toString();
 //    }
 //

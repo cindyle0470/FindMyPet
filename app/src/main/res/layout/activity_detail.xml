@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -85,7 +85,7 @@
                 android:id="@+id/tv_sub_region"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
@@ -166,7 +166,7 @@
                 android:id="@+id/tv_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="@+id/textView5" />
@@ -175,7 +175,7 @@
                 android:id="@+id/tv_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="@+id/textView7" />
@@ -184,7 +184,7 @@
                 android:id="@+id/tv_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView6"
                 app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -193,7 +193,7 @@
                 android:id="@+id/tv_contact_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -202,7 +202,7 @@
                 android:id="@+id/tv_contact_method"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toTopOf="@+id/textView10" />
@@ -214,14 +214,14 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:minLines="8"
-                android:textColor="@color/saddlebrown"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toTopOf="@+id/textView9" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btn_adopt"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
@@ -248,7 +248,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button4" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_adopt" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v4.widget.NestedScrollView>
