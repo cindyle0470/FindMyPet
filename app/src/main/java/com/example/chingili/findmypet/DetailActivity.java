@@ -5,6 +5,7 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.chingili.findmypet.data.Pet;
 import com.example.chingili.findmypet.data.PetPhoto;
+import com.example.chingili.findmypet.fragment.FindPetFragment;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView contactMethod;
     private TextView description;
     private Button backBtn;
-    private Button adoptBtn;
+    private Button adoptBtn;             //  領養確認按鈕尚未寫
     private ImageView img;
     private String photo;
 
@@ -48,11 +50,17 @@ public class DetailActivity extends AppCompatActivity {
         description.setText(pet.getDescription());
 
         List<PetPhoto> photos = pet.getPhotos();
+
         if (photos != null && photos.size() > 0) {
-            Glide.with(DetailActivity.this).load(photo).into(img);
+            Glide.with(DetailActivity.this).load(photos).into(img);
         }
 
-
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
