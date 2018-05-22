@@ -1,7 +1,5 @@
 package com.example.chingili.findmypet;
 
-import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.chingili.findmypet.data.Pet;
 import com.example.chingili.findmypet.data.PetPhoto;
-import com.example.chingili.findmypet.fragment.FindPetFragment;
 
 import java.util.List;
 

@@ -37,4 +37,5 @@ public class PetPhoto {
         this.imageUrl = image;
     }
 
+
 }

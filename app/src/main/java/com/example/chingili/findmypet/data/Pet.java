@@ -18,7 +18,7 @@ public class Pet implements Parcelable {
 
     @JsonIgnoreProperties(ignoreUnknown = true)   // 防止 json response 中因為出現了 model class 沒定義的變數而產生 exception
     @JsonProperty("id")                    //把 json response 中的 key map到 model class 的變數令到 model class 不用出現有 "_" 的變數名稱
-    int id;
+            int id;
     @JsonProperty("type_id")
     int typeId;
     @JsonProperty("person_id")
@@ -35,8 +35,9 @@ public class Pet implements Parcelable {
     String color;
     @JsonProperty("description")
     String description;
-    @JsonProperty("photos")
+
     String photo;
+    @JsonProperty("photos")
     List<PetPhoto> photos = new ArrayList<>();
     @JsonProperty("status")
     boolean status;
@@ -65,16 +66,7 @@ public class Pet implements Parcelable {
         this.contactMethod = contactMethod;
     }
 
-//    public Pet(int regionId, String subRegion, String sex, String size, String color, String description, String contactPerson, String contactMethod) {
-//        this.regionId = regionId;
-//        this.subRegion = subRegion;
-//        this.sex = sex;
-//        this.size = size;
-//        this.color = color;
-//        this.description = description;
-//        this.contactPerson = contactPerson;
-//        this.contactMethod = contactMethod;
-//    }
+
 
     protected Pet(Parcel in) {
         id = in.readInt();

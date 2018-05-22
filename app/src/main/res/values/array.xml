@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pet">
+        <item>汪汪</item>
+        <item>喵喵</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="area">
+        <item>基隆市</item>
+        <item>台北市</item>
+        <item>新北市</item>
+        <item>桃園市</item>
+        <item>新竹市/縣</item>
+        <item>苗栗市</item>
+        <item>台中市</item>
+        <item>彰化縣</item>
+        <item>南投縣</item>
+        <item>雲林縣</item>
+        <item>嘉義市/縣</item>
+        <item>台南市</item>
+        <item>高雄市</item>
+        <item>屏東縣</item>
+        <item>台東縣</item>
+        <item>花蓮縣</item>
+        <item>宜蘭縣</item>
+    </string-array>
+
+    <string-array name="sex">
+        <item>公</item>
+        <item>母</item>
+        <item>不明</item>
+    </string-array>
+</resources>
